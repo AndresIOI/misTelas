@@ -42,7 +42,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                                 <a class="navbar-brand" href="{{ route('cart-show') }}">
-                                    Carrito
+                                    Carrito HOLA
                                 </a>   
                                 @if (Auth::user()->rol_id == 1)
                                 <a class="navbar-brand" href="{{ route('principal') }}">
