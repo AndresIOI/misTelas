@@ -14,8 +14,12 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('info.principal');
 })->name('welcome');;
+
+Route::get('/blog', function () {
+    return view('info.blog');
+})->name('blog');;
 
 Route::get('/principal', function(){
     return view('layouts.principal');

@@ -9,7 +9,7 @@
             <p><span style="font-weight:bold">Número de pedido: </span>{{$orden->id}}</p>
             <p><span style="font-weight:bold">Subtotal: </span>${{ number_format($orden->subtotal)}}</p>
             <p><span style="font-weight:bold">Envio: </span>${{number_format($orden->envio)}}</p>
-            <p><span style="font-weight:bold">Total: </span>${{ number_format($orden->subtotal * $orden->envio)}}</p>
+            <p><span style="font-weight:bold">Total: </span>${{ number_format($orden->subtotal + $orden->envio)}}</p>
             <p><span style="font-weight:bold">Fecha: </span>{{ $orden->created_at}}</p>
             <div class="table-responsive">
                 <table class="table table-striped table-hover table-bordered">

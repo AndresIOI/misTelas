@@ -1,0 +1,39 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+  
+  }
+  header {
+    margin-top: 75px;
+  }
+  #nav {
+    background: #4fb783;
+  
+  }
+  #testimonial {
+    background: #feeb97;
+    padding: 50px 0 30px 0;
+    text-align: center;
+  }
+  #info-dos {
+    background: #feeb97;
+    margin-bottom: 0px;
+
+  }
+  #titulos {
+    text-align: center;
+  }
+  #ren {
+    background: red;
+  }
+  
+  #contact {
+    background: url(../img/veterinaria3.jpg) ;
+  }
+  #galeriaTitulo {
+    background:  #feeb97;
+  }
+  
+  #footer {
+    background: #4fb783;
+  }
+  
