@@ -15,8 +15,8 @@ class CreateHabilitacionEntradasTable extends Migration
     {
         Schema::create('habilitacion_entradas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ordenCompra',191);
-            $table->string('claveFactura',191);
+            $table->string('ordenCompra',191)->unique();
+            $table->string('claveFactura',191)->unique();
             $table->string('fecha',191);
             $table->string('OperarioRecepcion',191);
             $table->unsignedInteger('operarioCompra');

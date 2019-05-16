@@ -10,7 +10,7 @@
 
 			<p>
 				<a href="{{ route('cart-trash') }}" class="btn btn-danger">
-					Vaciar carrito <i class="fa fa-trash"></i>
+					Vaciar carrito <i class="fas fa-trash-alt"></i>
 				</a>
 			</p>
 
@@ -50,13 +50,13 @@
 														data-href="{{ route('cart-update', $item->id) }}"
 										data-id = "{{ $item->id }}"
 									>
-										Refrescar
+									<i class="fas fa-sync"></i>
 									</a>
 								</td>
 								<td>${{ number_format($item->producto->precio_publico * $item->quantity,2) }}</td>
 								<td>
 									<a href="{{ route('cart-delete', $item->id) }}" class="btn btn-danger">
-										Quitar
+										<i class="fas fa-trash-alt"></i>
 									</a>
 								</td>
 							</tr>

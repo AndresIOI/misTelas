@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\TipoHabilitacion;
 use App\Habilitacion;
+use App\Http\Requests\HabilitacionCreateRequest;
 
 class HabilitacionsController extends Controller
 {
@@ -62,7 +63,7 @@ class HabilitacionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HabilitacionCreateRequest $request)
     {
         //
         $habilitacion = new Habilitacion();

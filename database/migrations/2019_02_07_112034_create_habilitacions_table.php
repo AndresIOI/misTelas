@@ -15,7 +15,7 @@ class CreateHabilitacionsTable extends Migration
     {
         Schema::create('habilitacions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('clave',191);
+            $table->string('clave',191)->unique();
             $table->string('descripcion',191);
             $table->string('unidad',191);
             $table->unsignedInteger('tipo_habilitacion_id');

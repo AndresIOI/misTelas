@@ -15,7 +15,7 @@ class CreateProductoTerminadosTable extends Migration
     {
         Schema::create('producto__terminados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('SKU');
+            $table->string('SKU')->unique();
             $table->string('img');
             $table->float('precio_publico');
             $table->unsignedInteger('clasificacion_id');

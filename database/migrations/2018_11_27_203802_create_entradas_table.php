@@ -15,8 +15,8 @@ class CreateEntradasTable extends Migration
     {
         Schema::create('entradas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('num_entrada');
-            $table->string('cve_factura',191);
+            $table->string('num_entrada')->unique();
+            $table->string('cve_factura',191)->unique();;
             $table->string('fecha',191);
             $table->string('OperarioRecepcion',191);
             $table->unsignedInteger('id_usuarioC');

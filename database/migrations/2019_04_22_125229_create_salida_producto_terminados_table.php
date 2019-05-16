@@ -15,7 +15,7 @@ class CreateSalidaProductoTerminadosTable extends Migration
     {
         Schema::create('salida_producto_terminados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numero_requisicion');
+            $table->string('numero_requisicion')->unique();
             $table->integer('contador');
             $table->boolean('contador_activo')->default(false);
             $table->float('tipoSalida_id');

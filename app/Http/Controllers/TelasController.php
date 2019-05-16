@@ -14,6 +14,8 @@ use App\Tipo_Tela;
 use App\Entrada;
 use App\Salida;
 use App\Proveedor;
+use App\Http\Requests\TelaCreateRequest;
+
 
 
 class TelasController extends Controller
@@ -362,16 +364,26 @@ class TelasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TelaCreateRequest $request)
     {
         //
-        $tela = new Tela();
-        $tela->cve_tela = $request->clave;
-        $tela->descripcion = $request->descripcion;
-        $tela->unidad = $request->unidad;
-        $tela->tipo_tela = $request->tipo_id;
-        $tela->save();
-        return redirect()->route('telas-index');
+        $consulta = Tela::where([
+            ['cve_tela',$request->clave],
+            ['unidad', $request->unidad],
+            ['tipo_tela',$request->tipo_id]
+        ])->get();
+        if($consulta->isEmpty()){
+            $tela = new Tela();
+            $tela->cve_tela = $request->clave;
+            $tela->descripcion = $request->descripcion;
+            $tela->unidad = $request->unidad;
+            $tela->tipo_tela = $request->tipo_id;
+            $tela->save();
+            return redirect()->route('telas-index');    
+        }else{
+            return redirect()->route('telas-index')->with('fail', 'No se pudo crear la TELA, ya que existe una tela con las mismas caracteristicas.');    
+        }
+        
     }
 
     /**

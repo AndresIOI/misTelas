@@ -15,7 +15,7 @@ class CreateEntradaProductosTerminadosTable extends Migration
     {
         Schema::create('entrada__productos__terminados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numero_entrada');
+            $table->string('numero_entrada')->unique();
             $table->unsignedInteger('empleado_id');
             $table->integer('numero_piezas');
             $table->unsignedInteger('tipo_produccion_id');

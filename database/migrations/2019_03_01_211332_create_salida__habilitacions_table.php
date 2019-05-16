@@ -15,7 +15,7 @@ class CreateSalidaHabilitacionsTable extends Migration
     {
         Schema::create('salida__habilitacions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numero_requisicion');
+            $table->string('numero_requisicion')->unique();
             $table->integer('piezas');
             $table->integer('contador');
             $table->boolean('contador_activo')->default(false);

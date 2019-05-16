@@ -15,7 +15,7 @@ class CreateSalidasTable extends Migration
     {
         Schema::create('salidas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numeroRequisicion');
+            $table->string('numeroRequisicion')->unique();
             $table->integer('piezas');
             $table->unsignedInteger('usuario_id');
             $table->integer('contador');
