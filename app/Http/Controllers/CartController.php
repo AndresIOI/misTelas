@@ -66,7 +66,7 @@ class CartController extends Controller
     	$cart = \Session::get('cart');
     	$total = 0;
     	foreach($cart as $item){
-    		$total += $item->producto->precio_publico * $item->quantity;
+    		$total += ($item->producto->precio_publico * $item->quantity)+($item->producto->precio_publico * .16)*$item->quantity;
     	}
 
     	return $total;

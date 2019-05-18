@@ -97,6 +97,10 @@ class HabilitacionsController extends Controller
     public function edit($id)
     {
         //
+        $habilitacion = Habilitacion::find($id);
+        $tipos = TipoHabilitacion::all();
+
+        return view('habilitaciones.edit',compact('habilitacion','tipos'));
     }
 
     /**
@@ -109,6 +113,31 @@ class HabilitacionsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'clave' => 'required|unique:habilitacions,clave,'.$id,
+            'descripcion' => 'required',
+            'tipo_id' => 'required',
+            'unidad' => 'required'
+        ]);
+        $consulta = Habilitacion::where([
+            ['clave', $request->clave],
+            ['unidad', $request->unidad],
+            ['tipo_habilitacion_id', $request->tipo_id]
+        ])->get();
+        if ($consulta->isEmpty()) {
+            $habilitacion = Habilitacion::find($id);
+            $habilitacion->clave = $request->clave;
+            $habilitacion->descripcion = $request->descripcion;
+            $habilitacion->unidad = $request->unidad;
+            $habilitacion->tipo_habilitacion_id = $request->tipo_id;
+            $habilitacion->update();
+    
+            return redirect()->route('habilitaciones-index')->with('status','Se actualizo correctamente la HABILITACION');
+        }else{
+            return redirect()->route('habilitaciones-index')->with('fail','No se pudo actualizar la HABILITACION, ya que existe un registro con las mismas caracteristicas');
+
+        }
+
     }
 
     /**

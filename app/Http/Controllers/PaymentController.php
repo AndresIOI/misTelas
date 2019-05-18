@@ -51,15 +51,16 @@ class PaymentController extends Controller
 		$currency = 'MXN';
 
 		foreach($cart as $producto){
+			$precio = ($producto->producto->precio_publico * .16) + $producto->producto->precio_publico;
 			$item = new Item();
 			$item->setName($producto->producto->SKU)
 			->setCurrency($currency)
 			->setDescription($producto->producto->descripcion)
 			->setQuantity($producto->quantity)
-			->setPrice($producto->producto->precio_publico);
+			->setPrice($precio);
 
 			$items[] = $item;
-			$subtotal += $producto->quantity * $producto->producto->precio_publico;
+			$subtotal += $producto->quantity * $precio;
 		}
 
 		$item_list = new ItemList();
@@ -189,7 +190,7 @@ class PaymentController extends Controller
         $order->save();
 	    
 	    foreach($cart as $item){
-			$order->productos()->attach($item->id,array('cantidad' => $item->quantity, 'precio' => $item->producto->precio_publico));
+			$order->productos()->attach($item->id,array('cantidad' => $item->quantity, 'precio' => $item->producto->precio_publico,'iva'=>(($item->producto->precio_publico * .16))*$item->quantity ));
 			$producto_inventario = Inventario_Productos_Terminados::find($item->id);
 			$producto_inventario->cantidad_inventario -= $item->quantity;
 			$producto_inventario->save();

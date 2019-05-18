@@ -38,7 +38,7 @@
                         <td>{{$habilitacion->created_at}}</td>
                         <td>
                             <form action="{{route('Habilitaciones.destroy',$habilitacion->id)}}" method="post">
-                            <a href="" class="btn btn-primary"> Editar </a>
+                            <a href="{{route('Habilitaciones.edit',$habilitacion->id)}}" class="btn btn-primary"> Editar </a>
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-danger">Borrar</button>

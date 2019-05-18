@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Order;
+use App\Http\Requests\UserCreateRequest;
+
 
 class UserController extends Controller
 {
@@ -41,7 +43,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
         //
         User::create([

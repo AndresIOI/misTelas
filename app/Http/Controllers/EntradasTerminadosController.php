@@ -62,8 +62,9 @@ class EntradasTerminadosController extends Controller
         $Tipo_produccion = Tproduccion::all();
         $tipos_productos = Tipo_Producto::all();
         $clasificaciones_productos = Clasificacion_Producto::all();
+        $productos = Producto_Terminado::all();
     if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 5 ){
-          return view('entradast.create',compact('fecha','nombre_usuarioT','nombre_maquilero','Tipo_produccion','tipos_productos','clasificaciones_productos'));
+          return view('entradast.create',compact('fecha','nombre_usuarioT','nombre_maquilero','Tipo_produccion','tipos_productos','clasificaciones_productos','productos'));
       }else{
           return view('layouts.sinPermisos');
       }

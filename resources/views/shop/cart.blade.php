@@ -22,6 +22,7 @@
                             <th>Producto</th>
                             <th>Talla</th>
 							<th>Precio</th>
+							<th>IVA</th>
 							<th>Cantidad</th>
 							<th>Subtotal</th>
 							<th>Quitar</th>
@@ -34,6 +35,7 @@
                                 <td>{{ $item->producto->SKU }}</td>
                                 <td>{{ $item->talla->talla }}</td>
 								<td>${{ number_format($item->producto->precio_publico,2) }}</td>
+								<td>${{ number_format(($item->producto->precio_publico * .16)*$item->quantity,2)}}</td>
 								<td>
 									<input 
 										type="number"
@@ -53,7 +55,7 @@
 									<i class="fas fa-sync"></i>
 									</a>
 								</td>
-								<td>${{ number_format($item->producto->precio_publico * $item->quantity,2) }}</td>
+								<td>${{ number_format(($item->producto->precio_publico * $item->quantity) + ($item->producto->precio_publico * .16)*$item->quantity,2) }}</td>
 								<td>
 									<a href="{{ route('cart-delete', $item->id) }}" class="btn btn-danger">
 										<i class="fas fa-trash-alt"></i>

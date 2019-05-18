@@ -49,7 +49,12 @@
             <div class="row">
                     <div class="col-sm-4">
                         <label for="">SKU/Modelo</label>
-                        <input type="text" class="form-control sku" id="sku">
+                        <select name="" id="sku" class="form-control sku">
+                            <option value="" selected>Seleccione un SKU</option>
+                            @foreach ($productos as $producto)
+                                <option value="{{$producto->SKU}}">{{$producto->SKU}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-sm-4">
                         <label for="">Clasificación</label>

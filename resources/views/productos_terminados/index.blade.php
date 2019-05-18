@@ -38,7 +38,7 @@
                         <td><img src="img/{{$producto->img}}"  alt="..."  style="weight:50px; height: 50px;"></td>
                         <td>
                             <form action="{{route('ProductosTerminados.destroy',$producto->id)}}" method="post">
-                            <a href="" class="btn btn-primary"> Editar </a>
+                            <a href="{{route('ProductosTerminados.edit',$producto->id)}}" class="btn btn-primary"> Editar </a>
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-danger">Borrar</button>

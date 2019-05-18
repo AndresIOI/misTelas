@@ -406,6 +406,10 @@ class TelasController extends Controller
     public function edit($id)
     {
         //
+        $tela = Tela::find($id); 
+        $tipos = Tipo_Tela::all();
+
+        return view('telas.edit',compact('tela','tipos'));
     }
 
     /**
@@ -418,6 +422,30 @@ class TelasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'clave' =>'required',
+            'descripcion' => 'required',
+            'tipo_id' => 'required',
+            'unidad' => 'required'
+        ]);
+        $consulta = Tela::where([
+            ['cve_tela', $request->clave],
+            ['unidad', $request->unidad],
+            ['tipo_tela', $request->tipo_id]
+        ])->get();
+        if($consulta->isEmpty()){
+            $tela = Tela::find($id);
+            $tela->cve_tela = $request->clave;
+            $tela->descripcion = $request->descripcion;
+            $tela->unidad = $request->unidad;
+            $tela->tipo_tela = $request->tipo_id;
+            $tela->update();
+            return redirect()->route('telas-index')->with('status','Se ha actualizado correctamente la TELA');
+        }else{
+            return redirect()->route('telas-index')->with('fail', 'No se puedo actualizar la TELA, ya que existe un registro con las mismas caracteristicas.');
+        }
+        
+
     }
 
     /**

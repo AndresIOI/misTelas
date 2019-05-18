@@ -9,7 +9,7 @@ class Order extends Model
     //
     public function productos(){
         return $this->belongsToMany('App\Inventario_Productos_Terminados','order_items','order_id','product_id')
-        ->withPivot('cantidad','precio');
+        ->withPivot('cantidad','precio','iva');
     }
     
 }

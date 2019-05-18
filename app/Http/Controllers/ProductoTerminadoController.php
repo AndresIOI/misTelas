@@ -10,6 +10,8 @@ use App\Inventario_Productos_Terminados;
 use App\Talla_Producto;
 use App\Clasificacion_Producto;
 use App\Producto_Terminado;
+use App\Http\Requests\ProductoTerminadoCreateRequest;
+
 
 class ProductoTerminadoController extends Controller
 {
@@ -73,7 +75,7 @@ class ProductoTerminadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoTerminadoCreateRequest $request)
     {
         //
         if($request->file('img')){
@@ -112,6 +114,10 @@ class ProductoTerminadoController extends Controller
     public function edit($id)
     {
         //
+        $producto = Producto_Terminado::find($id);
+        $clasificaciones = Clasificacion_Producto::all();
+
+        return view('productos_terminados.edit',compact('producto','clasificaciones'));
     }
 
     /**
@@ -124,6 +130,29 @@ class ProductoTerminadoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'SKU' => 'required|string|max:13|unique:producto__terminados,SKU,'.$id,
+            'clasificacion_id' => 'required',
+            'tipo_id' => 'required',
+            'descripcion' => 'required',
+            'precio_publico' => 'required|numeric',
+            'img' => 'mimes:jpeg,jpg,png,gif'
+        ]);
+        $producto_terminado = Producto_Terminado::find($id);
+        $producto_terminado->SKU = $request->SKU;
+        $producto_terminado->clasificacion_id = $request->clasificacion_id;
+        $producto_terminado->tipo_id = $request->tipo_id;
+        $producto_terminado->descripcion = $request->descripcion;
+        $producto_terminado->precio_publico = $request->precio_publico;
+        if($request->file('img')){
+            \File::delete(public_path('img/'.$producto_terminado->img));
+            $file = $request->file('img');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/img/', $name);
+            $producto_terminado->img = $name;
+        }
+        $producto_terminado->update();
+        return redirect()->route('productos_terminados.index')->with('status', 'Se actualizo correctamente el PRODUCTO TERMINADO');
     }
 
     /**

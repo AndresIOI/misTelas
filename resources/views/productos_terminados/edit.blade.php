@@ -1,21 +1,22 @@
 @extends('layouts.index')
-@section('titulo','Registar Usuario')
+@section('titulo','Editar Producto Terminado')
 @section('content')
 @include('common.errors')
 
-	<form class="" method="POST" action="{{ route('ProductosTerminados.store') }}" enctype="multipart/form-data">
-			@csrf
+	<form class="" method="POST" action="{{ route('ProductosTerminados.update',$producto->id) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
             <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-             Registro de producto terminado</div>
+             Editar producto terminado</div>
             <div class="card-body">
 
 <div class="form-group row">
     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('SKU') }}</label>
 
     <div class="col-md-6">
-        <input id="name" type="text" class="form-control{{ $errors->has('SKU') ? ' is-invalid' : '' }}" name="SKU" value="{{ old('SKU') }}" required autofocus>
+        <input id="name" type="text" class="form-control{{ $errors->has('SKU') ? ' is-invalid' : '' }}" name="SKU" value="{{$producto->SKU}}" required autofocus>
 
         @if ($errors->has('SKU'))
             <span class="invalid-feedback" role="alert">
@@ -30,9 +31,11 @@
 
     <div class="col-md-6">
     <select name="clasificacion_id" id="clasificacion_id" class="form-control">
-        <option value="" selected>Seleccione la clasificacion</option>
+        <option value="{{$producto->clasificacion_id}}" selected>{{$producto->clasificacion->clasificacion_producto}}</option>
         @foreach ($clasificaciones as $clasificacion)
-            <option value="{{$clasificacion->id}}">{{$clasificacion->clasificacion_producto}}</option>
+        @if ($producto->clasificacion->clasificacion_producto != $clasificacion->clasificacion_producto)
+        <option value="{{$clasificacion->id}}">{{$clasificacion->clasificacion_producto}}</option>
+        @endif
         @endforeach
     </select>
 </div>
@@ -43,7 +46,7 @@
 
         <div class="col-md-6">
         <select name="tipo_id" id="tipo_id" class="form-control">
-            <option value="" selected>Seleccione el tipo</option>
+            <option value="{{$producto->tipo_id}}" selected>{{$producto->tipo->tipo_producto}}</option>
         </select>
     </div>
 </div>
@@ -52,14 +55,14 @@
             <label for="descripcion" class="col-md-4 col-form-label text-md-right">Descripcion</label>
     
             <div class="col-md-6">
-                <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control">{{$producto->descripcion}}</textarea>
         </div>
 </div>
 <div class="form-group row">
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Precio al publico sin IVA') }}</label>
     
         <div class="col-md-6">
-            <input id="name" type="number" step="0.01" class="form-control{{ $errors->has('precio_publico') ? ' is-invalid' : '' }}" name="precio_publico" value="" required autofocus>
+            <input id="name" type="number" step="0.01" class="form-control" name="precio_publico" value="{{$producto->precio_publico}}" required autofocus>
     
         </div>
     </div>
@@ -68,14 +71,14 @@
     <label for="img" class="col-md-4 col-form-label text-md-right">Seleccione imagen del producto</label>
 
     <div class="col-md-6">
-        <input id="img" type="file" class="" name="img" required>
+        <input id="img" type="file" class="" name="img" >
     </div>
 </div>
 
 <div class="form-group row mb-0">
     <div class="col-md-6 offset-md-4">
         <button type="submit" class="btn btn-success">
-            {{ __('Registrar') }}
+            Actualizar
         </button>
     </div>
 </div>

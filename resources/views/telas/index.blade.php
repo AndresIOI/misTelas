@@ -38,7 +38,7 @@
                         <td>{{$tela->created_at}}</td>
                         <td>
                           <form action="{{route('Telas.destroy',$tela->id)}}" method="post">
-                          <a href="" class="btn btn-primary"> Editar </a>
+                          <a href="{{route('Telas.edit',$tela->id)}}" class="btn btn-primary"> Editar </a>
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Borrar</button>

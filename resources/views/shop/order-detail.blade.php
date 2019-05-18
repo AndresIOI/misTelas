@@ -22,6 +22,7 @@
 						<th>Producto</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
+						<th>IVA</th>
 						<th>Subtotal</th>
 					</tr>
 					@foreach($cart as $item)
@@ -29,7 +30,8 @@
 							<td>{{ $item->producto->SKU }}</td>
 							<td>${{ number_format($item->producto->precio_publico,2) }}</td>
 							<td>{{ $item->quantity }}</td>
-							<td>${{ number_format($item->producto->precio_publico * $item->quantity,2) }}</td>
+							<td>${{	number_format(($item->producto->precio_publico * .16)* $item->quantity,2)}}</td>
+							<td>${{ number_format($item->producto->precio_publico * $item->quantity+(($item->producto->precio_publico * .16)* $item->quantity),2) }}</td>
 						</tr>
 					@endforeach
 				</table><hr>
