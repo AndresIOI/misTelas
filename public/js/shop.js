@@ -1,11 +1,21 @@
 
 $(document).ready(function(){
     $(".btn-update-item").on('click',function(e){
-        e.preventDefault();
         var id = $(this).data('id');
         var href = $(this).data('href');
         var quantity = $("#product_"+ id).val();
-        window.location.href = href + "/" + quantity;
+        $.get('/api/producto/'+id+'/inventario/cantidad', function(data){
+            quantity=Number.parseFloat(quantity);
+            data =Number.parseFloat(data);
+            if(quantity <= data){
+                e.preventDefault();
+                window.location.href = href + "/" + quantity;
+            }else{
+                alert('Lo sentimos, en estos momentos no contamos con esa cantidad en stock');
+            }
+
+        });
+
     });
 });
 

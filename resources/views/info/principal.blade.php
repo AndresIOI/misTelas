@@ -29,7 +29,7 @@
       <section id="testimonial" class="mt-5">
         <div class="container">
           <p class="h2 mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.asdasd ad asd asd asd asasdasdasd sadasda</p>
-          <p class="h4">- Andres Villanueva</p>
+          <p class="h4">- Lorem ipsum/p>
         </div>
       </section>
   

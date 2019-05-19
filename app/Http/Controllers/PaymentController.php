@@ -57,20 +57,22 @@ class PaymentController extends Controller
 			->setCurrency($currency)
 			->setDescription($producto->producto->descripcion)
 			->setQuantity($producto->quantity)
-			->setPrice($precio);
+			->setPrice($producto->producto->precio_publico);
 
 			$items[] = $item;
-			$subtotal += $producto->quantity * $precio;
+			$subtotal += $producto->quantity * $producto->producto->precio_publico;
 		}
 
 		$item_list = new ItemList();
 		$item_list->setItems($items);
+		$tax = $subtotal * .16;
 
 		$details = new Details();
-		$details->setSubtotal($subtotal)
-		->setShipping(100);
-
-		$total = $subtotal + 100;
+		$details->setShipping(100)
+		->setTax($tax)
+		->setSubtotal($subtotal);
+		//->setTax(.16)
+		$total = $subtotal + 100 + $tax;
 
 		$amount = new Amount();
 		$amount->setCurrency($currency)

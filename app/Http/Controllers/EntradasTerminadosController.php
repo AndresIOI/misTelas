@@ -162,8 +162,12 @@ class EntradasTerminadosController extends Controller
         $usuariosT = UsuarioT::all();
         $maquileros =Maquileros::all();
         $produccion = Tproduccion::all();
+        foreach ($entrada->productos as $key => $producto) {
+            $talla_id = $producto->pivot->talla_id;
+            $tallas[$key] = Talla_Producto::where('id',$talla_id)->value('talla');
+        }
 
-        return view('entradast.edit',compact('entrada','usuariosT','maquileros','produccion'));
+        return view('entradast.edit',compact('entrada','usuariosT','maquileros','produccion','tallas'));
     }
 
     /**

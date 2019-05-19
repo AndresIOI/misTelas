@@ -64,3 +64,6 @@ Route::get('/reiniciarContadorHabilitacion/{numeroRequisicion}','SalidasHabilita
 Route::get('/contador/salidaProducto/{numeroRequisicion}','SalidasTerminadosController@byContador');
 Route::get('/reiniciarContadorProducto/{numeroRequisicion}','SalidasTerminadosController@byReiniciarContadorSalida');
 Route::get('/clasificacion/{clasificacion_id}/tipos','ProductoTerminadoController@byTipos');
+
+//shop 
+Route::get('/producto/{id}/inventario/cantidad','ShopController@cantidad');
