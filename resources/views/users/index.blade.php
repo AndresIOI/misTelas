@@ -35,11 +35,7 @@
                         <td>{{$usuario->email}}</td>
                         <td>{{$usuario->rol->rol}}</td>
                         <td>
-                          <form action="{{route('Telas.destroy',$usuario->id)}}" method="post">
-                          <a href="{{route('Telas.edit',$usuario->id)}}" class="btn btn-primary"> Editar </a>
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger">Borrar</button>
+                          <a href="{{route('Usuarios.edit',$usuario->id)}}" class="btn btn-primary"> Editar </a>
                           </form>
                         </td>
                     </tr>
