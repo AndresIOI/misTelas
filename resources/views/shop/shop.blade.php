@@ -20,6 +20,7 @@
                         <img class="card-img-top" src="img/{{$producto->producto->img}}" alt="Card image cap" style="weight:100px; height: 200px;">
                         <div class="card-body">
                           <h5 class="card-title">{{$producto->producto->SKU}}</h5>
+                          <p class="card-text" style="font-weight: bold;">Para: {{$producto->producto->clasificacion->clasificacion_producto}}</p>
                           <p class="card-text">{{$producto->producto->tipo->tipo_producto}}</p>
                           <p class="card-text">Talla: {{$producto->talla->talla}}</p>
                           <p class="card-text" style="color:green;"><span style="font-weight: bold">Precio: </span>${{$producto->producto->precio_publico}}</p>
