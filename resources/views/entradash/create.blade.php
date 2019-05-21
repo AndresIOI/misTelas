@@ -17,8 +17,13 @@
 					<label for="">Fecha</label> 
                     <input type="text" name="fecha"  class="form-control"  value ="{{$fecha}}" readonly>
 					<label>Nombre de quien Recibe</label>
-					<input type="text" name="OperarioRecepcion" class="form-control">
-					<label>Nombre de quien ordenó</label>
+                    <select name="OperarioRecepcion" id="" class="form-control">
+                            <option value="" selected>Seleccione la persona quien recibio</option>
+                            <option value="Recepcionista - Ana Guitierrez">Recepcionista - Ana Guitierrez</option>
+                            <option value="Recepcionista - Laura Angeles">Recepcionista - Laura Angeles</option>
+                            <option value="Vigilancia - Arturo Reyes">Vigilancia - Arturo Reyes</option>
+                    </select>					
+                    <label>Nombre de quien ordenó</label>
                     <select name="usuarioCompras" id="" class="form-control">
                         <option value="" selected>Seleccione Empleado</option>
                     @foreach($empleadosCH as $empleado)

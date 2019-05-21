@@ -10,7 +10,12 @@
              Datos de Reingreso</div>
             <div class="card-body">
             <label for="">Número de Requisión</label>
-					<input type="text" name="num_requisicion"  id="numeroRequisicion" class="form-control">
+                    <select name="num_requisicion" id="numeroRequisicion" class="form-control">
+                        <option value=""selected>Seleccione el numero de Requisicion</option>
+                        @foreach ($salidas as $salida)
+                            <option value="{{$salida->numeroRequisicion}}">{{$salida->numeroRequisicion}}</option>
+                        @endforeach
+                    </select>
 
             </div>
             </div>

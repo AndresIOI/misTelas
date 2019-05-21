@@ -28,7 +28,7 @@ class StoreEntradaRequest extends FormRequest
             'cve_factura' => 'required|string|max:8|unique:entradas,cve_factura',
             'OperarioRecepcion' => 'required|string|max:40',
             'usuarioCompras' => 'required|max:40',
-
+            'proveedor' => 'required',
             'clave_tela' => 'required',
             'color' => 'required',
             'cantidadTela' => 'required|digits_between:1,9999',
@@ -51,6 +51,8 @@ class StoreEntradaRequest extends FormRequest
             
             'OperarioRecepcion.required' => 'El campo NOMBRE DE QUIEN RECIBE es obligatorio.',
             'OperarioRecepcion.max' => 'El campo NOMBRE DE QUIEN RECIBE no puede ser mayor a 40 caracteres.',
+
+            'proveedor.required' => 'El campo PROVEEDOR es obligatorio',
 
             'usuarioCompras.required' => 'El campo NOMBRE DE QUIEN ORDENÓ es obligatorio.',
             'usuarioCompras.max' => 'El campo NOMBRE DE QUIEN ORDENÓ no puede ser mayor a 40 caracteres.',

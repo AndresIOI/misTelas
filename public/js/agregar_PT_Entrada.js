@@ -1,11 +1,31 @@
 function agregar_PT_Entrada() {
+    var sku = document.getElementById("sku").value;
+
+    var talla = document.getElementById("talla");
+    var talla = talla.options[talla.selectedIndex].text;
+
+    var skus = new Array();
+    $(".skus").each(function(){
+        skus.push($(this).val());
+    });
+
+    var tallas = new Array();
+    $(".tallas").each(function(){
+        tallas.push($(this).val());    
+    });        
+                
+for (let index = 0; index < skus.length; index++) {
+    if(skus[index] == sku && tallas[index] == talla){
+        return alert('Ya ha agregado un PRODUCTO TERMINADO con las mismas caracteristicas. Revise sus datos de entrada');
+    }
+}
  
     var tabla = document.getElementById("TablaPT");
   
    
 
-    var sku = document.getElementById("sku").value;
     var campo1 = document.createElement("input");
+    campo1.className = "skus";
     campo1.type = "text";
     campo1.name = "skue[][skue]";
     campo1.value = sku;
@@ -39,9 +59,9 @@ function agregar_PT_Entrada() {
         campo4.readOnly = "true";
 
 
-        var talla = document.getElementById("talla");
-        var talla = talla.options[talla.selectedIndex].text;   
+    
         var campo5 = document.createElement("input");
+        campo5.className = "tallas";
         campo5.type = "text";
         campo5.name = "talla[][talla]";
         campo5.value = talla;
@@ -61,6 +81,9 @@ function agregar_PT_Entrada() {
             campo6.focus();
             return alert("El campo CANTIDAD DE UNIDADES esta vació");     
         }
+        if(campo6.value <=  "0"){
+            return alert("El campo CANTIDAD no puede ser 0 o menor");
+         }
         
 
         var PrecioU = document.getElementById("PrecioU").value;
@@ -73,6 +96,9 @@ function agregar_PT_Entrada() {
             campo7.focus();
             return alert("El campo COSTO UNITARIO esta vació");     
         }
+        if(campo7.value <=  "0"){
+            return alert("El campo CANTIDAD no puede ser 0 o menor");
+         }
 
 
         var Costo = document.getElementById("Costo").value;

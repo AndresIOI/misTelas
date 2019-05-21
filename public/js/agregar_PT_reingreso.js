@@ -1,13 +1,35 @@
 function agregar_PT_reingreso() {
+
+
+    var sku = document.getElementById("skuReingresos");
+    var sku = sku.options[sku.selectedIndex].text;   
+
+    var talla = document.getElementById("tallaReingreso");
+    var talla = talla.options[talla.selectedIndex].text;   
+
+    var skus = new Array();
+    $(".skus").each(function(){
+        skus.push($(this).val());
+    });
+
+    var tallas = new Array();
+    $(".tallas").each(function(){
+        tallas.push($(this).val());    
+    });        
+                
+for (let index = 0; index < skus.length; index++) {
+    if(skus[index] == sku && tallas[index] == talla){
+        return alert('Ya ha agregado un PRODUCTO TERMINADO con las mismas caracteristicas. Revise sus datos de entrada');
+    }
+}
  
     var tabla = document.getElementById("TablaPTR");
  
    
     
 
-    var sku = document.getElementById("skuReingresos");
-    var sku = sku.options[sku.selectedIndex].text;   
     var campo1 = document.createElement("input");
+    campo1.className = "skus";
     campo1.type = "text";
     campo1.name = "sku[][sku]";
     campo1.value = sku;
@@ -51,9 +73,8 @@ function agregar_PT_reingreso() {
             return alert("El campo DESCRIPCIÓN esta vació");
         }
 
-        var talla = document.getElementById("tallaReingreso");
-        var talla = talla.options[talla.selectedIndex].text;   
         var campo5 = document.createElement("input");
+        campo5.className = "tallas";
         campo5.type = "text";
         campo5.name = "talla[][talla]";
         campo5.value = talla;

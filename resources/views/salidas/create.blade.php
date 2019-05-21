@@ -60,11 +60,11 @@
             </div>
             <div class="col-sm-4">
             <label for="">Cantidad de Salida</label>
-            <input type="number" name="" id="cantidadSalida" class="form-control" min="1" >
+            <input type="number" name="" id="cantidadSalida" class="form-control monto" min="1" onkeyup="multi();">
             </div>
             <div class="col-sm-2">
             <label for="">Precio Unitario</label>
-            <input type="number" name="" id="precioUnitario" class="form-control" readonly>
+            <input type="number" name="" id="precioUnitario" class="form-control monto" readonly min="1" onkeyup="multi();">
             </div>
             <div class="col-sm-2">
             <label for="">Importe Total</label>
@@ -117,7 +117,6 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script src={{asset("js/salidas_tipoTelas.js")}}></script>
 <script src={{asset("js/propiedadesTelas.js")}}></script>
 <script src={{asset("js/colores.js")}}></script>
@@ -125,5 +124,22 @@
 <script src={{asset("js/agregar_tela_salida.js")}}></script>
 <script src={{asset("js/limpiar_salida_tela.js")}}></script>
 <script src={{asset("js/checarContador.js")}}></script>
+<script>
+    function multi(){
+    var total = 1;
+    var change= false; //
+    $(".monto").each(function(){
+        if (!isNaN(parseFloat($(this).val()))) {
+            change= true;
+            total *= parseFloat($(this).val());
+        }
+    });
+    // Si se modifico el valor , retornamos la multiplicación
+    // caso contrario 0
+    total = (change)? total:0;
+    $('#importeTotal').val(total);
+    //document.getElementById('Costo').innerHTML = total;
+}
+</script>
 
 @endsection

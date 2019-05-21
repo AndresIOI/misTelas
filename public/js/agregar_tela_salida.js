@@ -1,15 +1,43 @@
 
 function agregar_tela() {
- 
+var tipoTela = document.getElementById("telaTipo");
+var nombreTipoTela = tipoTela.options[tipoTela.selectedIndex].text;
+
+var clave_tela_id = document.getElementById("cveTelaSalidas");
+var nombreClave = clave_tela_id.options[clave_tela_id.selectedIndex].text;
+
+var inputColor = document.getElementById("colorTela");
+var colorTela = inputColor.options[inputColor.selectedIndex].text;
+    
+    var tipos = new Array();
+        $(".tipos").each(function(){
+            tipos.push($(this).val());
+        });
+
+    var claves = new Array();
+        $(".claves").each(function(){
+            claves.push($(this).val());    
+        });        
+    var colores = new Array();
+        $(".colores").each(function(){
+            colores.push($(this).val());
+        });
+                
+    for (let index = 0; index < tipos.length; index++) {
+        if(tipos[index] == nombreTipoTela && claves[index] == nombreClave && colores[index] == colorTela){
+            return alert('Ya ha agregado una TELA con las mismas caracteristicas');
+        }
+        
+    }
+
  var tabla = document.getElementById("tablaTelasSalida");
  
 
 
  
- var tipoTela = document.getElementById("telaTipo");
- var nombreTipoTela = tipoTela.options[tipoTela.selectedIndex].text;
  
  var campo1 = document.createElement("input");
+     campo1.className = "tipos";
      campo1.type = "text";
      campo1.name = "t_tela[][t_tela]";
      campo1.value = nombreTipoTela;
@@ -18,11 +46,14 @@ function agregar_tela() {
         return alert("Debes seleccionar un TIPO DE TELA");
     }
 
-var clave_tela_id = document.getElementById("cveTelaSalidas");
-var nombreClave = clave_tela_id.options[clave_tela_id.selectedIndex].text;
+
 var campo_clave_tela = document.createElement("input");
+         campo_clave_tela.className = "claves";   
+         campo_clave_tela.id = "clave";   
          campo_clave_tela.type = "text";
          campo_clave_tela.value = nombreClave;
+         campo_clave_tela.readOnly = "true";
+
          
  var claveTela = document.getElementById("cveTelaSalidas").value;
  var campo2 = document.createElement("input");
@@ -50,10 +81,11 @@ var campo_clave_tela = document.createElement("input");
      campo4.value = document.getElementById("telaUni").value;
      campo4.readOnly = "true";
  
- var inputColor = document.getElementById("colorTela");
- var colorTela = inputColor.options[inputColor.selectedIndex].text;
+
     
  var campo5 = document.createElement("input");
+     campo5.className = "colores";
+     campo5.id = "color";   
      campo5.type = "text";
      campo5.name = "color[][color]";
      campo5.value = colorTela;
@@ -78,9 +110,11 @@ var campo_clave_tela = document.createElement("input");
         return alert("El campo CANTIDAD DE SALIDA esta vació");
     }
     if(campo7.value <=  "0"){
-        return alert("El campo CANTIDAD DE LA DEVOLUCIÓN no puede ser 0 o menor");
+        $('#importeTotal').val(0);
+        return alert("El campo CANTIDAD DE LA SALIDA no puede ser 0 o menor");
      }
      if(Number(campo7.value) > Number(campo6.value)){
+        $('#importeTotal').val(0);
         return alert("El campo CANTIDAD DE SALIDA debe ser menor o igual al campo CANTIDAD DISPONIBLE");
      }
      

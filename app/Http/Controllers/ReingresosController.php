@@ -38,8 +38,9 @@ class ReingresosController extends Controller
      */
     public function create()
     {
+        $salidas = Salida::all();
         if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 3){
-            return view('reingresos.create');
+            return view('reingresos.create',compact('salidas'));
         }else{
             return view('layouts.sinPermisos');
         }

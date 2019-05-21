@@ -1,13 +1,42 @@
 function agregar_habilitacion_reingreso() {
+
+    var clasificacion_id = document.getElementById("clasificacion");
+    var clasificacion = clasificacion_id.options[clasificacion_id.selectedIndex].text;
+
+    var tipoHabilitacion = document.getElementById("tipoHabilitacion");
+    var tipoHabilitacion = tipoHabilitacion.options[tipoHabilitacion.selectedIndex].text;
+
+    var clavehabilitacion = document.getElementById("clavehabilitacion");
+    var clavehabilitacion = clavehabilitacion.options[clavehabilitacion.selectedIndex].text;   
+    
+    var clasificaciones = new Array();
+    $(".clasificaciones").each(function(){
+        clasificaciones.push($(this).val());
+    });
+
+    var tipos = new Array();
+    $(".tipos").each(function(){
+        tipos.push($(this).val());    
+    });        
+    var claves = new Array();
+    $(".claves").each(function(){
+        claves.push($(this).val());
+    });
+            
+for (let index = 0; index < tipos.length; index++) {
+    if(clasificaciones[index] == clasificacion && tipos[index] == tipoHabilitacion && claves[index] == clavehabilitacion){
+        return alert('Ya ha agregado una HABILITACION con las mismas caracteristicas. Revise sus datos de entrada');
+    }
+}
  
     var tabla = document.getElementById("TablaHabilitacion");
     
    
     
 
-        var clasificacion_id = document.getElementById("clasificacion");
-        var clasificacion = clasificacion_id.options[clasificacion_id.selectedIndex].text;
+
         var campo1 = document.createElement("input");
+        campo1.className = "clasificaciones";
         campo1.type = "text";
         campo1.name = "clasificacion[][clasificacion]";
         campo1.value = clasificacion;
@@ -18,9 +47,9 @@ function agregar_habilitacion_reingreso() {
     
 
    
-        var tipoHabilitacion = document.getElementById("tipoHabilitacion");
-        var tipoHabilitacion = tipoHabilitacion.options[tipoHabilitacion.selectedIndex].text;
+
         var campo2 = document.createElement("input");
+        campo2.className = "tipos";
         campo2.type = "text";
         campo2.name = "tipoHabilitacion[][tipoHabilitacion]";
         campo2.value = tipoHabilitacion;
@@ -32,9 +61,9 @@ function agregar_habilitacion_reingreso() {
 
 
 
-        var clavehabilitacion = document.getElementById("clavehabilitacion");
-        var clavehabilitacion = clavehabilitacion.options[clavehabilitacion.selectedIndex].text;   
+
         var campo3 = document.createElement("input");
+        campo3.className = "claves";
         campo3.type = "text";
         campo3.name = "clavehabilitacion[][clavehabilitacion]";
         campo3.value = clavehabilitacion;

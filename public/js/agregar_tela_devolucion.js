@@ -1,15 +1,43 @@
 
 function agregar_tela() {
- 
+var tipoTela = document.getElementById("telaTipoDevolucion");
+var nombreTipoTela = tipoTela.options[tipoTela.selectedIndex].text;
+
+var clave_tela_id = document.getElementById("cveTelaDevolucion");
+var nombreClave = clave_tela_id.options[clave_tela_id.selectedIndex].text;
+
+var inputColor = document.getElementById("colorTelaDevolucion");
+var colorTela = inputColor.options[inputColor.selectedIndex].text;
+
+var tipos = new Array();
+    $(".tipos").each(function(){
+        tipos.push($(this).val());
+    });
+
+var claves = new Array();
+    $(".claves").each(function(){
+        claves.push($(this).val());    
+    });        
+var colores = new Array();
+    $(".colores").each(function(){
+        colores.push($(this).val());
+    });
+            
+for (let index = 0; index < tipos.length; index++) {
+    if(tipos[index] == nombreTipoTela && claves[index] == nombreClave && colores[index] == colorTela){
+        return alert('Ya ha agregado una TELA con las mismas caracteristicas. Revise sus datos de entrada');
+    }
+    
+}
  var tabla = document.getElementById("tablaTelasDevoluciones");
  
  
 
  
- var tipoTela = document.getElementById("telaTipoDevolucion");
- var nombreTipoTela = tipoTela.options[tipoTela.selectedIndex].text;
+
  
  var campo1 = document.createElement("input");
+     campo1.className = "tipos";
      campo1.type = "text";
      campo1.name = "t_tela[][t_tela]";
      campo1.value = nombreTipoTela;
@@ -20,9 +48,8 @@ function agregar_tela() {
 
 
      
-     var clave_tela_id = document.getElementById("cveTelaDevolucion");
-var nombreClave = clave_tela_id.options[clave_tela_id.selectedIndex].text;
 var campo_clave_tela = document.createElement("input");
+         campo_clave_tela.className = "claves";
          campo_clave_tela.type = "text";
          campo_clave_tela.value = nombreClave;
 
@@ -50,11 +77,9 @@ var campo_clave_tela = document.createElement("input");
      campo4.name = "unidadTela[][unidadTela]";
      campo4.value = document.getElementById("telaUniDevolucion").value;
      campo4.readOnly = "true";
- 
- var inputColor = document.getElementById("colorTelaDevolucion");
- var colorTela = inputColor.options[inputColor.selectedIndex].text;
     
  var campo5 = document.createElement("input");
+     campo5.className = "colores";
      campo5.type = "text";
      campo5.name = "color[][color]";
      campo5.value = colorTela;

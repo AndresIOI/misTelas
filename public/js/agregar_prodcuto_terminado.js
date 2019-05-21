@@ -1,9 +1,11 @@
 function agregar_habilitacion() {
+
+
  
     var tabla = document.getElementById("TablaPT");
     
-        var sku = document.getElementById("sku");
         var campo1 = document.createElement("input");
+        campo1.className = "skus";
         campo1.type = "text";
         campo1.name = "sku[][sku]";
         campo1.value = sku.value;
@@ -31,9 +33,8 @@ function agregar_habilitacion() {
         campo3.readOnly = "true";
         
 
-        var id_talla = document-getElementById('talla');
-        var talla = id_talla.options[id_talla.selectedIndex].text;
         var campo4 = document.createElement("input");
+        campo4.className = "tallas";
         campo4.type = "text";
         campo4.name = "talla[][talla]";
         campo4.value = talla;

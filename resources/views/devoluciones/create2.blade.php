@@ -12,7 +12,12 @@
             <div class="row">
                 <div class="col-6">
                 <label for="">Orden de Compra</label>
-					<input type="text" name="orden_compra"  class="form-control" id="ordenCompra">
+                    <select name="orden_compra" id="ordenCompra" class="form-control">
+                        <option value="" selected>Selecciones la entrada</option>
+                        @foreach ($entradas as $entrada)
+                            <option value="{{$entrada->num_entrada}}">{{$entrada->num_entrada}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-6">
 					<label for="">Proveedor</label>

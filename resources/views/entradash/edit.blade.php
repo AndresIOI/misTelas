@@ -27,7 +27,20 @@
             @endif
             @endforeach   
         </select></p>  
-        <p><span style="font-weight:bold">Operario que Recibio: </span><input type="text" class="form-control" value="{{$entrada->OperarioRecepcion}}" name="operario"></p>  
+        <p><span style="font-weight:bold">Operario que Recibio: </span>
+        <select name="operario" id="" class="form-control">
+            <option value="{{$entrada->OperarioRecepcion}}" selected>{{$entrada->OperarioRecepcion}}</option>
+            @if ($entrada->OperarioRecepcion == "Recepcionista - Ana Guitierrez")
+              <option value="Recepcionista - Laura Angeles">Recepcionista - Laura Angeles</option>
+              <option value="Vigilancia - Arturo Reyes">Vigilancia - Arturo Reyes</option>
+            @elseif($entrada->OperarioRecepcion == "Vigilancia - Arturo Reyes")
+              <option value="Recepcionista - Laura Angeles">Recepcionista - Laura Angeles</option>
+              <option value="Recepcionista - Ana Guitierrez">Recepcionista - Ana Guitierrez</option>
+            @else
+              <option value="Recepcionista - Ana Guitierrez">Recepcionista - Ana Guitierrez</option>
+              <option value="Vigilancia - Arturo Reyes">Vigilancia - Arturo Reyes</option>
+            @endif  
+    </select>	</p>  
         <p><span style="font-weight:bold">Fecha de Entrada: </span>{{$entrada->created_at}}</p>  
         <br>
         <div class="table-responsive">

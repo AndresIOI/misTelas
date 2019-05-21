@@ -55,8 +55,9 @@ class DevolucionesController extends Controller
      */
     public function create()
     {
+        $entradas = Entrada::all();
         if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 3){
-            return view('devoluciones.create2');
+            return view('devoluciones.create2',compact('entradas'));
         }else{
             return view('layouts.sinPermisos');
         }

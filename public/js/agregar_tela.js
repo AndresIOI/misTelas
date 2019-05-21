@@ -1,28 +1,40 @@
 function agregar_tela() {
  
+
+    var tipoTela = document.getElementById("tipoTela");
+    var nombreTipoTela = tipoTela.options[tipoTela.selectedIndex].text;
+
+    var clave_tela_id = document.getElementById("cveTela");
+    var nombreClave = clave_tela_id.options[clave_tela_id.selectedIndex].text;
+
+    var inputColor = document.getElementById("colorTela");
+    var colorTela = inputColor.options[inputColor.selectedIndex].text;
+
+   var tipos = new Array();
+           $(".tipos").each(function(){
+               tipos.push($(this).val());
+           });
+   
+    var claves = new Array();
+           $(".claves").each(function(){
+               claves.push($(this).val());    
+           });        
+    var colores = new Array();
+           $(".colores").each(function(){
+               colores.push($(this).val());
+           });
+                   
+       for (let index = 0; index < tipos.length; index++) {
+           if(tipos[index] == nombreTipoTela && claves[index] == nombreClave && colores[index] == colorTela){
+               return alert('Ya ha agregado una TELA con las mismas caracteristicas. Revise sus datos de entrada');
+           }
+           
+       }
+
  var tabla = document.getElementById("tablaTelas");
  
-//  var fila = tabla.insertRow();
- 
-//  var celda1 = fila.insertCell(0);
-//  var celda2 = fila.insertCell(1);
-//  var celda3 = fila.insertCell(2);
-//  var celda4 = fila.insertCell(3);
-//  var celda5 = fila.insertCell(4);
-//  var celda6 = fila.insertCell(5);
-//  var celda7 = fila.insertCell(6);
-//  var celda8 = fila.insertCell(7);
-//  var celda9 = fila.insertCell(8);
-//  var celda10 = fila.insertCell(9);
-//  var celda11 = fila.insertCell(10);
-//  var celda12 = fila.insertCell(11);
- 
-
- var tipoTela = document.getElementById("tipoTela");
-
- var nombreTipoTela = tipoTela.options[tipoTela.selectedIndex].text;
-
  var campo1 = document.createElement("input");
+     campo1.className = "tipos";
      campo1.type = "text";
      campo1.name = "t_tela[][t_tela]";
      campo1.value = nombreTipoTela;
@@ -33,9 +45,9 @@ function agregar_tela() {
 
      
      
- var clave_tela_id = document.getElementById("cveTela");
- var nombreClave = clave_tela_id.options[clave_tela_id.selectedIndex].text;
+
  var campo_clave_tela = document.createElement("input");
+     campo_clave_tela.className = "claves";
      campo_clave_tela.type = "text";
      campo_clave_tela.value = nombreClave;
  var claveTela = document.getElementById("cveTela").value;
@@ -68,10 +80,10 @@ function agregar_tela() {
      campo4.value = document.getElementById("telaUni").value;
      campo4.readOnly = "true";
  
- var inputColor = document.getElementById("colorTela");
- var colorTela = inputColor.options[inputColor.selectedIndex].text;
+
 
  var campo5 = document.createElement("input");
+     campo5.className="colores";
      campo5.type = "text";
      campo5.name = "color[][color]";
      campo5.value = colorTela;
