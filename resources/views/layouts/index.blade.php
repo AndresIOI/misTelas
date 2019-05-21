@@ -255,6 +255,11 @@
          @endif
          {{--CREAR USUARIO--}}
          @if(Auth::user()->rol_id ==1)
+         <li class="nav-item">
+            <a class="nav-link" href="{{route('Usuarios.index')}}" style="color:white">
+              <i class="fas fa-user-circle fa-fw"></i>
+              <span>Usuarios</span></a>
+          </li>
           <li class="nav-item">
               <a class="nav-link" href="{{route('Usuarios.create')}}" style="color:white">
                 <i class="fas fa-user-circle fa-fw"></i>

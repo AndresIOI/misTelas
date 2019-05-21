@@ -47,7 +47,7 @@
                                 <a class="navbar-brand" href="{{ route('cart-show') }}">
                                     <i class="fas fa-shopping-cart" title="Carrito"></i>
                                 </a>    
-                                @if (Auth::user()->rol_id == 1)
+                                @if (Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 3 || Auth::user()->rol_id == 4 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 6)
                                 <a class="navbar-brand" href="{{ route('principal') }}">
                                     <i class="fas fa-tachometer-alt" title="Panel de Administracion"></i>
                                 </a>      
