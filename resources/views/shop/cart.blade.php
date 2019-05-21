@@ -64,7 +64,10 @@
 							</tr>
 						@endforeach
 					</tbody>
-				</table><hr>
+				</table>
+				<h6 style="color:blue;">* - Hacer click en el icono de refrescar, para actualizar la cantidad de tus productos.</h6>
+
+				<hr>
 				
 				<h3>
 					<span class="label label-success">
@@ -72,7 +75,9 @@
 					</span>
 				</h3>
 
+
 			</div>
+
 			@else
 				<h3><span class="label label-warning">No hay productos en el carrito :(</span></h3>
 			@endif
