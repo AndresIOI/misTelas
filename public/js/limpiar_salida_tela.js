@@ -9,3 +9,15 @@ function limpiar_salida_tela() {
     document.getElementById("precioUnitario").value="";
 
   }
+
+function limpiarTipo() {
+  document.getElementById("cveTelaSalidas").value="";
+  document.getElementById("colorTela").value="";
+  document.getElementById("telaDes").value="";
+  document.getElementById("telaUni").value="";
+  document.getElementById("cantidadInventario").value="";
+  document.getElementById("cantidadSalida").value="";
+  document.getElementById("precioUnitario").value="";
+  document.getElementById("importeTotal").value="";
+
+}

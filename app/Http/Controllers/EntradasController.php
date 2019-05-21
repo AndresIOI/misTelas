@@ -215,7 +215,7 @@ class EntradasController extends Controller
         $entrada->id_proveedor = $request->proveedor_id;
         $entrada->update();
 
-        return "Actualizado";
+        return redirect()->route('Entrada-Tela.show', $entrada->id)->with('status', 'Entrada se actualizo correctamente');
     }
 
     /**

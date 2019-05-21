@@ -142,8 +142,8 @@ for (let index = 0; index < skus.length; index++) {
     celda6.appendChild(campo6);
     celda7.appendChild(campo7);
     celda8.appendChild(campo8);
-    celda9.appendChild(campo9);
-    celda10.appendChild(campo10);
+   /* celda9.appendChild(campo9);
+    celda10.appendChild(campo10);*/
     
    }
    function vaciar_campo(input) {

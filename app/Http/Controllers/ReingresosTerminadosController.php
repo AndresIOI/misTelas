@@ -74,7 +74,8 @@ class ReingresosTerminadosController extends Controller
     public function create()
     {
         if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 5 ){
-            return view('reingresost.create',compact());
+            $salidas = SalidaProductoTerminado::all();
+            return view('reingresost.create',compact('salidas'));
         }else{
             return view('layouts.sinPermisos');
         }

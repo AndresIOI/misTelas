@@ -76,7 +76,8 @@ class DevolucionesTerminadosController extends Controller
     public function create()
     {
         if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 5 ){
-            return view('devolucionest.create',compact());
+            $entradas = Entrada_Productos_Terminados::all();
+            return view('devolucionest.create',compact('entradas'));
         }else{
             return view('layouts.sinPermisos');
         }

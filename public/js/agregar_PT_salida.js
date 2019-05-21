@@ -18,6 +18,7 @@ function agregar_PT_salida() {
                 
 for (let index = 0; index < skus.length; index++) {
     if(skus[index] == sku_modelo && tallas[index] == talla){
+        $('#Costo').val("");
         return alert('Ya ha agregado un PRODUCTO TERMINADO con las mismas caracteristicas. Revise sus datos de entrada');
     }
 }
@@ -125,6 +126,7 @@ for (let index = 0; index < skus.length; index++) {
 
         var Costo = document.getElementById("Costo").value;
         var campo9 = document.createElement("input");
+        campo9.id = "it";
         campo9.type = "text";
         campo9.name = "Costo[][Costo]";
         campo9.value = Costo;
@@ -140,6 +142,9 @@ for (let index = 0; index < skus.length; index++) {
         campo10.value = "Borrar Fila";
         campo10.onclick = function() {
             var fila = this.parentNode.parentNode;
+            var importeTotal = $('#it').val();
+            var importeSalida = $('#importeSalida').val();
+            $('#importeSalida').val(importeSalida-importeTotal);
             var tbody = tabla.getElementsByTagName("tbody")[0];
             tbody.removeChild(fila);
         }
@@ -169,6 +174,14 @@ for (let index = 0; index < skus.length; index++) {
     celda9.appendChild(campo9);
     celda10.appendChild(campo10);
     
+    var e = $('#importeSalida').val();
+    var importeTela = $('#Costo').val();
+    if(importeTela != '' && importeTela > 0){
+        var importeTotal = parseFloat(importeTela) + parseFloat(e);
+        $('#importeSalida').val(importeTotal);
+        $('#Costo').val('');
+    }
+    $('#Costo').val("");
    }
    function vaciar_campo(input) {
     

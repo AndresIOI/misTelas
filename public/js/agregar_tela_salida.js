@@ -25,10 +25,13 @@ var colorTela = inputColor.options[inputColor.selectedIndex].text;
                 
     for (let index = 0; index < tipos.length; index++) {
         if(tipos[index] == nombreTipoTela && claves[index] == nombreClave && colores[index] == colorTela){
+            $('#importeTotal').val("");
             return alert('Ya ha agregado una TELA con las mismas caracteristicas');
         }
         
     }
+
+
 
  var tabla = document.getElementById("tablaTelasSalida");
  
@@ -120,17 +123,6 @@ var campo_clave_tela = document.createElement("input");
      
 
 
- var campo8 = document.createElement("input");
-     campo8.type = "button";
-     campo8.value = "Borrar Fila";
-     campo8.onclick = function() {
-     
-         var fila = this.parentNode.parentNode;
-         var tbody = tabla.getElementsByTagName("tbody")[0];
-         
-         tbody.removeChild(fila);
-         
-     }
 var campo9 = document.createElement("input");
     campo9.type = "text";
     campo9.name = "precioUnitario[][precioUnitario]";
@@ -138,11 +130,28 @@ var campo9 = document.createElement("input");
     campo9.readOnly = "true";
 
 var campo10 = document.createElement("input");
+campo10.id = "it";
     campo10.readOnly = true ;
     campo10.type = "text";
     campo10.name = "importeTotal[][importeTotal]";
     campo10.value = document.getElementById("importeTotal").value;
     campo10.readOnly = "true";
+
+
+ var campo8 = document.createElement("input");
+ campo8.type = "button";
+ campo8.value = "Borrar Fila";
+ campo8.onclick = function() {
+    
+     var fila = this.parentNode.parentNode;
+     var importeTotal = $('#it').val();
+     var importeSalida = $('#importeSalida').val();
+     $('#importeSalida').val(importeSalida-importeTotal);
+     var tbody = tabla.getElementsByTagName("tbody")[0];
+     
+     tbody.removeChild(fila);
+     
+ }
 
 
     var fila = tabla.insertRow();
@@ -172,6 +181,14 @@ var campo10 = document.createElement("input");
  celda11.appendChild(campo2);
  celda11.hidden="true";
 
+ var e = $('#importeSalida').val();
+ var importeTela = $('#importeTotal').val();
+ if (importeTela != '' && importeTela > 0) {
+     var importeTotal = parseFloat(importeTela) + parseFloat(e);
+     $('#importeSalida').val(importeTotal);
+     document.getElementById("importeTotal").value="";       
+ }
+ $('#importeTotal').val("");
 
 }
 

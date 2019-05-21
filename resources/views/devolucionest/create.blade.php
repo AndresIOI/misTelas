@@ -12,7 +12,12 @@
             <div class="row">
                 <div class="col-12">
                 <label for="">Factura/Requisición</label>
-					<input type="text" name="factura"  class="form-control factura" id="factura">
+                <select name="factura" id="factura" class="form-control factura" onchange="limpiar();">
+                    <option value="" selected>Seleccione la Factura/Requisicion</option>
+                    @foreach ($entradas as $entrada)
+                        <option value="{{$entrada->numero_entrada}}">{{$entrada->numero_entrada}}</option>
+                    @endforeach
+                </select>
                 </div>
             </div>
             </div>
@@ -26,7 +31,7 @@
                     <div class="row">
                             <div class="col-sm-4">
                                     <label for="">SKU/Modelo</label>
-                                    <select class="form-control" id="skuDevolucion" name="skuDevolucion">
+                                    <select class="form-control" id="skuDevolucion" name="skuDevolucion" onchange="limpiarSku();">
                                         <option value="" selected>Seleccione el SKU/Modelo</option>  
                                     </select> 
                                     </div>
@@ -61,7 +66,7 @@
                     
                     <div class="col">
                     <br>
-                    <input type="button" onClick="agregar_PT_devolucion();" value="Añadir Producto" class="btn btn-primary">
+                    <input type="button" onClick="agregar_PT_devolucion(); limpiar();" value="Añadir Producto" class="btn btn-primary">
                     </div>
                         <br>
                         
@@ -108,6 +113,25 @@
         <script src={{asset("js/agregar_PT_devolucion.js")}}></script>
         <script src={{asset("js/limpiar_entrada_habilitacion.js")}}></script>
         <script src={{asset("js/productos_terminados.js")}}></script>
+        <script>
+                function limpiar() {
+                    $('#skuDevolucion').val("");
+                    $('#clasificacionDevolucion').val("");
+                    $('#tipoPDevolucion').val("");
+                    $('#descripcionDevolucion').val("");
+                    $('#tallaDevolucion').val("");
+                    $('#CantidadinventarioDevolucion').val("");
+                    $('#CantidadUnidadesSalidaDevolucion').val("");
+                }
+                function limpiarSku() {
+                    $('#clasificacionDevolucion').val("");
+                    $('#tipoPDevolucion').val("");
+                    $('#descripcionDevolucion').val("");
+                    $('#tallaDevolucion').val("");
+                    $('#CantidadinventarioDevolucion').val("");
+                    $('#CantidadUnidadesSalidaDevolucion').val("");
+                }
+        </script>
         
               
         @endsection

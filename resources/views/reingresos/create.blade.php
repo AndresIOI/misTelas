@@ -10,7 +10,7 @@
              Datos de Reingreso</div>
             <div class="card-body">
             <label for="">Número de Requisión</label>
-                    <select name="num_requisicion" id="numeroRequisicion" class="form-control">
+                    <select name="num_requisicion" id="numeroRequisicion" class="form-control" onchange="limpiar_reingreso_tela();">
                         <option value=""selected>Seleccione el numero de Requisicion</option>
                         @foreach ($salidas as $salida)
                             <option value="{{$salida->numeroRequisicion}}">{{$salida->numeroRequisicion}}</option>
@@ -27,7 +27,7 @@
             <div class="row">
             <div class="col-sm-4">
             <label for="">Tipo de Tela</label>
-            <select name="" class="form-control" id="telaTipoReingreso">
+            <select name="" class="form-control" id="telaTipoReingreso" onchange="limpiarTipo();">
                                 <option value="" selected>Seleccione Tipo de Tela</option>  
                             </select>
             </div>

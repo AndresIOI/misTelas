@@ -1,7 +1,7 @@
 $(function(){
     $(document).on('change','.telas',onSelectCveTelaChange);
     //$(document).on('change','#cantidadSalida',onSelectCantidadTelaChange);
-    $(document).on('click','#botonAgregar',onImporteTotal);
+    //$(document).on('click','#botonAgregar',onImporteTotal);
 });
 
 function onImporteTotal(){

@@ -66,17 +66,28 @@ function onSelectClaveHabilitacion(){
         }
     });
 }
-
+$('#numeroRequisicion').on('focusin', function(){
+    $(this).data('val', $(this).val());
+});
 function onSelectClasificacionReingreso(){
-    var numeroRequisicion = $(this).val();
-    
-    $.get('/api/clasificacionHabilitacion/reingreso/'+numeroRequisicion, function (data){        
-        var html = '<option value="" selected>Elige la clasificacion</option>';
-        for (let index = 0; index < data.length; index++) {
-            html += '<option value="'+data[index].id+'">'+data[index].clasificacion+'</option>';          
-        }        
-        $('.clasificacionReingreso').html(html);
+    var numeroRequisicion = $(this).val();    
+    var clasificaciones = new Array();
+    $(".clasificaciones").each(function(){
+        clasificaciones.push($(this).val());
     });
+
+    if(clasificaciones.length > 0){
+        $('#numeroRequisicion').val($(this).data('val'));
+        return alert("No es posible cambiar de ORDEN DE REQUISICION, ya que tienes agregadas HABILITACIONES.\nDebe de borrar las HABILITACIONES ingresadas para cambiar de ORDEN DE REQUISICION");
+    }else{
+        $.get('/api/clasificacionHabilitacion/reingreso/'+numeroRequisicion, function (data){        
+            var html = '<option value="" selected>Elige la clasificacion</option>';
+            for (let index = 0; index < data.length; index++) {
+                html += '<option value="'+data[index].id+'">'+data[index].clasificacion+'</option>';          
+            }        
+            $('.clasificacionReingreso').html(html);
+        });
+    }
 }
 
 function onSelectTipoReingreso(){
@@ -112,17 +123,30 @@ function onSelectHabilitacionDescripcionReingreso(){
         $('#CantidadUnidadesSalida').val(data[0].pivot.cantidad);     
     });
 }
-
+$('#ordenCompra').on('focusin', function(){
+    $(this).data('val', $(this).val());
+});
 function onSelectClasificacionDevolucion(){
     var orden_compra = $(this).val();
-    $.get('/api/clasificacion/'+orden_compra+'/devolucion', function(data){                
-        var html = '<option value="" selected>Elige la clasificación</option>';
-        for (let index = 0; index < data.clasificaciones.length; index++) {
-            html += '<option value="'+data.clasificaciones[index].id+'">'+data.clasificaciones[index].clasificacion+'</option>';          
-        }        
-        $('#proveedor').val(data.proveedor.nombre_proveedorH)
-        $('.clasificacionDevolucion').html(html);
+    
+    var clasificaciones = new Array();
+    $(".clasificaciones").each(function(){
+        clasificaciones.push($(this).val());
     });
+    if(clasificaciones.length > 0){
+        $('#ordenCompra').val($(this).data('val'));
+        return alert("No es posible cambiar de ORDEN DE COMPRA, ya que tienes agregadas HABILITACIONES.\nDebe de borrar las HABILITACIONES ingresadas para cambiar de ORDEN DE COMPRA");
+    }else{
+        $.get('/api/clasificacion/'+orden_compra+'/devolucion', function(data){                
+            var html = '<option value="" selected>Elige la clasificación</option>';
+            for (let index = 0; index < data.clasificaciones.length; index++) {
+                html += '<option value="'+data.clasificaciones[index].id+'">'+data.clasificaciones[index].clasificacion+'</option>';          
+            }        
+            $('#proveedor').val(data.proveedor.nombre_proveedorH)
+            $('.clasificacionDevolucion').html(html);
+        });
+    }
+
 }
 
 function onSelectTipoDevolucion(){
@@ -159,22 +183,11 @@ function onSelectDetallesDevolucion(){
     });
 }
 
-$(function(){
-    $(document).on('click','#botonAgregar',onImporteTotal);
-});
 
-function onImporteTotal(){
 
-    var e = $('#importeSalida').val();
-    var importeTela = $('#Costo').val();
-    if(importeTela != '' && importeTela > 0){
-        var importeTotal = parseFloat(importeTela) + parseFloat(e);
-        $('#importeSalida').val(importeTotal);
-        $('#Costo').val('');
-    }
-    $('#Costo').val("");
 
-}
+
+
 
 function onSelectnumeroRequisicionChange() {
     var numeroRequisicion = $(this).val();

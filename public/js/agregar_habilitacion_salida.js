@@ -25,6 +25,8 @@ function agregar_habilitacion_salida() {
             
 for (let index = 0; index < tipos.length; index++) {
     if(clasificaciones[index] == clasificacion && tipos[index] == tipoHabilitacion && claves[index] == clavehabilitacion){
+        $('#Costo').val("");
+
         return alert('Ya ha agregado una HABILITACION con las mismas caracteristicas. Revise sus datos de entrada');
     }
 }
@@ -119,6 +121,7 @@ for (let index = 0; index < tipos.length; index++) {
         campo8.readOnly = "true";
 
         var campo9= document.createElement("input");
+        campo9.id = "it";
         campo9.type = "text";
         campo9.name = "Costo[][Costo]";
         campo9.value = document.getElementById("Costo").value;
@@ -130,6 +133,9 @@ for (let index = 0; index < tipos.length; index++) {
         campo10.value = "Borrar Fila";
         campo10.onclick = function() {
             var fila = this.parentNode.parentNode;
+            var importeTotal = $('#it').val();
+            var importeSalida = $('#importeSalida').val();
+            $('#importeSalida').val(importeSalida-importeTotal);
             var tbody = tabla.getElementsByTagName("tbody")[0];
             tbody.removeChild(fila);
         }
@@ -156,6 +162,15 @@ for (let index = 0; index < tipos.length; index++) {
     celda8.appendChild(campo8);
     celda9.appendChild(campo9);
     celda10.appendChild(campo10);
+
+    var e = $('#importeSalida').val();
+    var importeTela = $('#Costo').val();
+    if(importeTela != '' && importeTela > 0){
+        var importeTotal = parseFloat(importeTela) + parseFloat(e);
+        $('#importeSalida').val(importeTotal);
+        $('#Costo').val('');
+    }
+    $('#Costo').val("");
    }
    function vaciar_campo(input) {
     

@@ -49,7 +49,7 @@
             <div class="row">
                     <div class="col-sm-4">
                             <label for="">Clasificación</label>
-                                <select name="" id="clasificacion" class="form-control clasificacion">
+                                <select name="" id="clasificacion" class="form-control clasificacion" onchange="limpiarClasificacion();">
                                     <option value="" selected>Elige la clasificación</option>
                                 @foreach($clasificaciones as $clasificacion)
                                     <option value="{{$clasificacion->id}}">{{$clasificacion->clasificacion}}</option>

@@ -62,28 +62,32 @@ function onSelectTalla(){
     });
 }
 
-function onImporteTotal(){
 
-    var e = $('#importeSalida').val();
-    var importeTela = $('#Costo').val();
-    if(importeTela != '' && importeTela > 0){
-        var importeTotal = parseFloat(importeTela) + parseFloat(e);
-        $('#importeSalida').val(importeTotal);
-        $('#Costo').val('');
-    }
-    $('#Costo').val("");
 
-}
 
+
+$('#numeroRequisicion').on('focusin', function(){
+    $(this).data('val', $(this).val());
+});
 function onSelectSalida(){
     var numeroRequisicion = $(this).val();
-    $.get('/api/salida/'+numeroRequisicion+'/productos', function(data){        
-        var html = '<option value="" selected>Seleccione Producto</option>';
-        for (let index = 0; index < data.length; index++) {
-            html += '<option value="'+data[index].id+'">'+data[index].sku+'</option>';          
-        }        
-        $('#skuReingresos').html(html);
+    
+    var skus = new Array();
+    $(".skus").each(function(){
+        skus.push($(this).val());
     });
+    if (skus.length > 0) {
+        $('#numeroRequisicion').val($(this).data('val'));
+        return alert("No es posible cambiar de ORDEN DE REQUISICION, ya que tienes agregados PRODUCTOS TERMINADOS.\nDebe de borrar los PRODUCTOS TERMINADOS ingresados para cambiar de ORDEN DE REQUISICION");
+    } else {
+        $.get('/api/salida/'+numeroRequisicion+'/productos', function(data){        
+            var html = '<option value="" selected>Seleccione Producto</option>';
+            for (let index = 0; index < data.length; index++) {
+                html += '<option value="'+data[index].id+'">'+data[index].sku+'</option>';          
+            }        
+            $('#skuReingresos').html(html);
+        });
+    }
 }
 
 function onSelectProductoReingreso(){
@@ -111,17 +115,30 @@ function onSelectCantidad(){
     });
 }
 
+$('#factura').on('focusin', function(){
+    $(this).data('val', $(this).val());
+});
+
 function onSelectProductosDevolucion() {
-    var factura = $(this).val();
-    console.log(factura);
-    
-    $.get('/api/entradaProductos/'+factura+'/productos', function (data) {
-        var html = '<option value="" selected>Seleccione el SKU/Modelo</option>';
-        for (let index = 0; index < data.length; index++) {
-            html += '<option value="'+data[index].id+'">'+data[index].sku+'</option>';          
-        }        
-        $('#skuDevolucion').html(html); 
+    var factura = $(this).val();    
+
+    var skus = new Array();
+    $(".skus").each(function(){
+        skus.push($(this).val());
     });
+    if (skus.length > 0) {
+        $('#factura').val($(this).data('val'));
+        return alert("No es posible cambiar la FACTURA/REQUISICION, ya que tienes agregados PRODUCTOS TERMINADOS.\nDebe de borrar los PRODUCTOS TERMINADOS ingresados para cambiar la FACTURA/REQUISICION");
+    } else {
+        $.get('/api/entradaProductos/'+factura+'/productos', function (data) {
+            var html = '<option value="" selected>Seleccione el SKU/Modelo</option>';
+            for (let index = 0; index < data.length; index++) {
+                html += '<option value="'+data[index].id+'">'+data[index].sku+'</option>';          
+            }        
+            $('#skuDevolucion').html(html); 
+        });
+    }
+
 }
 
 function onSelectDetallesProducto() {

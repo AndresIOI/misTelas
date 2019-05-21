@@ -25,8 +25,7 @@ class StoreReingresoPTRequest extends FormRequest
     {
         return [
             'num_requisicion' => 'required|string|max:15',
-             'skuReingresos' => 'required',
-             'clasificacionReingreso' => 'required',
+             'sku' => 'required',
             // 'tipoReingreso' => 'required',
         ];
     }
@@ -36,7 +35,7 @@ class StoreReingresoPTRequest extends FormRequest
             'num_requisicion.required' => 'El campo ORDEN DE REQUISICIÓN es obligatorio',
             'num_requisicion.max' => 'El campo ORDEN DE REQUISICIÓN debe ser de maximo 15 caracteres.',
 
-            'skuReingresos.required' => 'El campo SKU/MODELO es obligatorio.',
+            'sku.required' => 'NO ha ingresado ningun PRODUCTO.',
             'clasificacionReingreso.required' => 'El campo CLASIFICACIÓN es obligatorio.',
             'tipoReingreso.required' => 'El campo TIPO DE PRODUCTO es obligatorio.',
         ];

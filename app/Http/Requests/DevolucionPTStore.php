@@ -26,18 +26,14 @@ class DevolucionPTStore extends FormRequest
         return [
             'factura' => 'required',
 
-            'skuDevolucion' => 'required',
-            'clasificacionDevolucion' => 'required',
-            'tipoPDevolucion' => 'required',
+            'sku' => 'required',
         ];
     }
     public function messages()
     {
         return[
             'factura.required' => 'El campo FACTURA/REQUISICIÓN es obligatorio',
-            'skuDevolucion.required' => 'El campo SKU/MODELO es obligatorio.',
-            'clasificacionDevolucion.required' => 'El campo CLASIFICACIÓN es obligatorio.',
-            'tipoPDevolucion.required' => 'El campo TIPO DE PRODUCTO es obligatorio.',
+            'sku.required' => 'NO ha seleccionado ningun PRODUCTO.',
         ];
 
     }

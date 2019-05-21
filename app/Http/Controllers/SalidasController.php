@@ -196,7 +196,7 @@ class SalidasController extends Controller
         $salida->piezas = $request->piezas;
         $salida->update();
         
-        return "Actualizado";
+        return redirect()->route('Salida-Tela.show',$salida->numeroRequisicion)->with('status', 'Salida Almacenada Correctamente');
     }
 
     /**

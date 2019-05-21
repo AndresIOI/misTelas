@@ -233,7 +233,7 @@ class EntradasHabilitacionController extends Controller
         $entrada->proveedor_id = $request->proveedor_id;
         $entrada->update();
 
-        return "Actualizado";
+        return redirect()->route('Entrada-Habilitacion.show', $entrada->id)->with('status', 'Entrada actualizada correctamente');
 
     }
 

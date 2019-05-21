@@ -12,7 +12,12 @@
             <div class="row">
                 <div class="col-6">
                 <label for="">Orden de Compra</label>
-					<input type="text" name="orden_compra"  class="form-control ordenCompraDevolucion" id="ordenCompra">
+                <select name="orden_compra" id="ordenCompra" class="form-control ordenCompraDevolucion" onchange="limpiar();">
+                    <option value="" selected>Seleccione la orden de compra</option>
+                    @foreach ($entradas as $entrada)
+                        <option value="{{$entrada->ordenCompra}}">{{$entrada->ordenCompra}}</option>
+                    @endforeach
+                </select>
                 </div>
                 <div class="col-6">
 					<label for="">Proveedor</label>
@@ -29,7 +34,7 @@
                 <div class="row">
                         <div class="col-sm-4">
                                 <label for="">Clasificación</label>
-                                    <select name="" id="clasificacion" class="form-control clasificacionDevolucion">
+                                    <select name="" id="clasificacion" class="form-control clasificacionDevolucion" onchange="limpiarClasificacion();">
                                         <option value="" selected>Elige la clasificación</option>
                                     </select>   
                                 </div>    
@@ -64,7 +69,7 @@
                 
                 <div class="col">
                 <br>
-                <input type="button" onClick="agregar_habilitacion_reingreso();" value="Añadir Producto" class="btn btn-primary">
+                <input type="button" onClick="agregar_habilitacion_reingreso(); limpiar();" value="Añadir Producto" class="btn btn-primary">
                 </div>
                     <br>
                     
@@ -111,6 +116,26 @@
     <script src={{asset("js/agregar_habilitacion_devolucion.js")}}></script>
     <script src={{asset("js/precioTotalTelas.js")}}></script>
     <script src={{asset("js/habilitaciones.js")}}></script>
+    <script>
+            function limpiar() {
+                $('#clasificacion').val("");
+                $('#tipoHabilitacionDevolucion').val("");
+                $('#clavehabilitacion').val("");
+                $('#HabilDes').val("");
+                $('#HabilUni').val("");
+                $('#CantidadUnidadesSalida').val("");
+                $('#CantidadUnidadesReingreso').val("");
+            }
+
+            function limpiarClasificacion() {
+                $('#tipoHabilitacionDevolucion').val("");
+                $('#clavehabilitacion').val("");
+                $('#HabilDes').val("");
+                $('#HabilUni').val("");
+                $('#CantidadUnidadesSalida').val("");
+                $('#CantidadUnidadesReingreso').val("");
+            }
+    </script>
     
           
     @endsection

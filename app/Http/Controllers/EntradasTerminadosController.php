@@ -188,7 +188,7 @@ class EntradasTerminadosController extends Controller
         $entrada->maquilero_id = $request->maquilero_id;
         $entrada->update();
 
-        return "Actualizado";
+        return redirect()->route('Entrada-Terminados.show', $entrada->id)->with('status', 'Entrada actualizada correctamente');
 
     }
 

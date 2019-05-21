@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-6">
                 <label for="">Orden de Compra</label>
-                    <select name="orden_compra" id="ordenCompra" class="form-control">
+                    <select name="orden_compra" id="ordenCompra" class="form-control" onchange="limpiar_devolucion_tela();">
                         <option value="" selected>Selecciones la entrada</option>
                         @foreach ($entradas as $entrada)
                             <option value="{{$entrada->num_entrada}}">{{$entrada->num_entrada}}</option>
@@ -35,7 +35,7 @@
             <div class="row">
             <div class="col-sm-4">
             <label for="">Tipo de Tela</label>
-            <select name="" class="form-control" id="telaTipoDevolucion">
+            <select name="" class="form-control" id="telaTipoDevolucion" onchange="limpiatTipo();">
                                 <option value="" selected>Seleccione Tipo de Tela</option>  
                             </select>
             </div>

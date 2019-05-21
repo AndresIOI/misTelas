@@ -10,8 +10,12 @@
              Datos de Reingreso</div>
             <div class="card-body">
             <label for="">Orden de Requisión</label>
-					<input type="string" name="num_requisicion"  id="numeroRequisicion" class="form-control numeroRequisicion">
-
+            <select name="num_requisicion" id="numeroRequisicion" class="form-control numeroRequisicion" onchange="limpiar();">
+                <option value="" selected>Seleccione la orden requisicion</option>
+                @foreach ($salidas as $salida)
+                    <option value="{{$salida->numero_requisicion}}">{{$salida->numero_requisicion}}</option>
+                @endforeach
+            </select>    
             </div>
             </div>
             <div class="card mb-3">
@@ -22,7 +26,7 @@
                 <div class="row">
                         <div class="col-sm-4">
                                 <label for="">Clasificación</label>
-                                    <select name="" id="clasificacion" class="form-control clasificacionReingreso">
+                                    <select name="" id="clasificacion" class="form-control clasificacionReingreso" onchange="limpiarClasificacion();">
                                         <option value="" selected>Elige la clasificación</option>
                                     </select>   
                                 </div>    
@@ -57,7 +61,7 @@
                 
                 <div class="col">
                 <br>
-                <input type="button" onClick="agregar_habilitacion_reingreso();" value="Añadir Producto" class="btn btn-primary">
+                <input type="button" onClick="agregar_habilitacion_reingreso(); limpiar();" value="Añadir Producto" class="btn btn-primary">
                 </div>
                     <br>
                     
@@ -104,6 +108,26 @@
     <script src={{asset("js/agregar_habilitacion_reingreso.js")}}></script>
     <script src={{asset("js/precioTotalTelas.js")}}></script>
     <script src={{asset("js/habilitaciones.js")}}></script>
+    <script>
+        function limpiar() {
+            $('#clasificacion').val("");
+            $('#tipoHabilitacion').val("");
+            $('#clavehabilitacion').val("");
+            $('#HabilDes').val("");
+            $('#HabilUni').val("");
+            $('#CantidadUnidadesSalida').val("");
+            $('#CantidadUnidadesReingreso').val("");
+        }
+
+        function limpiarClasificacion() {
+            $('#tipoHabilitacion').val("");
+            $('#clavehabilitacion').val("");
+            $('#HabilDes').val("");
+            $('#HabilUni').val("");
+            $('#CantidadUnidadesSalida').val("");
+            $('#CantidadUnidadesReingreso').val("");
+        }
+    </script>
     
           
     @endsection

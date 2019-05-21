@@ -10,7 +10,12 @@
              Datos de Reingreso</div>
             <div class="card-body">
             <label for="">Orden de Requisición</label>
-					<input type="string" name="num_requisicion"  id="numeroRequisicion" class="form-control numeroRequisicion">
+            <select name="num_requisicion" id="numeroRequisicion" class="form-control numeroRequisicion" onchange="limpiar();">
+                <option value="" selected>Seleccione la orden de requisicion</option>
+                @foreach ($salidas as $salida)
+                    <option value="{{$salida->numero_requisicion}}">{{$salida->numero_requisicion}}</option>
+                @endforeach
+            </select>
             </div>
             </div>  
               <div class="card mb-3">
@@ -21,7 +26,7 @@
                     <div class="row">
                             <div class="col-sm-4">
                                     <label for="">SKU/Modelo</label>
-                                    <select name="skuReingresos" id="skuReingresos" class="form-control skuReingresos">
+                                    <select name="skuReingresos" id="skuReingresos" class="form-control skuReingresos" onchange="limpiarSku();">
                                         <option value="" selected>Seleccione Producto</option>
                                     </select>   
                             </div>
@@ -56,7 +61,7 @@
                     
                     <div class="col">
                     <br>
-                    <input type="button" onClick="agregar_PT_reingreso();" value="Añadir Producto" class="btn btn-primary">
+                    <input type="button" onClick="agregar_PT_reingreso(); limpiar();" value="Añadir Producto" class="btn btn-primary">
                     </div>
                         <br>
                         
@@ -102,6 +107,25 @@
         <script src={{asset("js/agregar_PT_reingreso.js")}}></script>
         <script src={{asset("js/limpiar_entrada_habilitacion.js")}}></script>
         <script src={{asset("js/productos_terminados.js")}}></script>
+        <script>
+                function limpiar() {
+                    $('#skuReingresos').val("");
+                    $('#clasificacionReingreso').val("");
+                    $('#tipoReingreso').val("");
+                    $('#descripcionReingreso').val("");
+                    $('#tallaReingreso').val("");
+                    $('#Cantidadalmacen').val("");
+                    $('#CantidadUnidadesSalida').val("");
+                }
+                function limpiarSku() {
+                    $('#clasificacionReingreso').val("");
+                    $('#tipoReingreso').val("");
+                    $('#descripcionReingreso').val("");
+                    $('#tallaReingreso').val("");
+                    $('#Cantidadalmacen').val("");
+                    $('#CantidadUnidadesSalida').val("");
+                }
+        </script>
         
               
         @endsection

@@ -96,9 +96,9 @@ class ReingresoHabilitacionController extends Controller
     {
         $tipos_habilitaciones = TipoHabilitacion::all();
         $clasificaciones = Clasificacion::all();
-          
+        $salidas = Salida_Habilitacion::all();
         if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 4 ){
-            return view('reingresosh.create',compact('clasificaciones','tipos_habilitaciones'));
+            return view('reingresosh.create',compact('clasificaciones','tipos_habilitaciones','salidas'));
         }else{
             return view('layouts.sinPermisos');
         }

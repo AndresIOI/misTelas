@@ -88,9 +88,9 @@ class DevolucionesHabilitacionController extends Controller
     {
         $tipos_habilitaciones = TipoHabilitacion::all();
         $clasificaciones = Clasificacion::all();
-
+        $entradas = Entrada_Habilitacion::all();
         if(Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2 || Auth::user()->rol_id == 4 ){
-            return view('devolucionesh.create',compact('clasificaciones','tipos_habilitaciones'));
+            return view('devolucionesh.create',compact('clasificaciones','tipos_habilitaciones','entradas'));
         }else{
             return view('layouts.sinPermisos');
         }

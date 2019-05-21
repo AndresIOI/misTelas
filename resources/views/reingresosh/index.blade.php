@@ -13,7 +13,6 @@
             <th scope="col">Número de Requisición</th>
             <th scope="col">Fecha</th>
             <th scope="col">Número de Reingreso</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -22,9 +21,6 @@
               <td><a href={{route('Reingreso-Habilitacion.show', $reingreso->id)}}>{{$reingreso->numero_requisicion}}</td>
               <td>{{$reingreso->created_at}}</td>
               <td>{{$reingreso->id}}</a></td>
-              <td>
-                <a href="" class="btn btn-primary"> Editar </a>
-              </td>
             </tr>
           @endforeach
         </tbody>

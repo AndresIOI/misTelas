@@ -8,3 +8,12 @@ function limpiar_devolucion_tela() {
     document.getElementById("cantidadDevolucion").value="";
 
   }
+
+function limpiatTipo() {
+  document.getElementById("cveTelaDevolucion").value="";
+  document.getElementById("colorTelaDevolucion").value="";
+  document.getElementById("telaDesDevolucion").value="";
+  document.getElementById("telaUniDevolucion").value="";
+  document.getElementById("cantidadDisponibleDevolucion").value="";
+  document.getElementById("cantidadDevolucion").value="";
+}

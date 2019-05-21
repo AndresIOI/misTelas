@@ -48,7 +48,7 @@
             <div class="row">
             <div class="col-sm-4">
             <label for="">Tipo de Tela</label>
-                <select name="" class="tipoTelas form-control" id="tipoTela">
+                <select name="" class="tipoTelas form-control" id="tipoTela" onchange="limpiarTela();">
                     <option value="" selected>Selecciona el Tipo de Tela</option>  
                 @foreach ($t_tela as $telat )
                     <option value="{{$telat->id_tipo_tela}}">{{$telat->tipo_tela}}</option>

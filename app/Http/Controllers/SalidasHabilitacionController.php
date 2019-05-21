@@ -172,7 +172,7 @@ class SalidasHabilitacionController extends Controller
         $salida->numero_requisicion = $request->num_req;
         $salida->piezas = $request->piezas;
         $salida->update();
-        return "Actualizado";
+        return redirect()->route('Salida-Habilitacion.show', [$salida->id])->with('status', 'Salida actualizada correctamente');
 
 
     }

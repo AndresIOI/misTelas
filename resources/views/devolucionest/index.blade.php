@@ -14,7 +14,6 @@
             <th scope="col">Número de Devolución</th>
             <th scope="col">Factura</th>
             <th scope="col">Fecha</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -23,9 +22,7 @@
               <th><a href={{route('Devolucion-Terminados.show', $devolucion->id)}}>{{$devolucion->id}}</a></th>
               <td>{{$devolucion->entrada->numero_entrada}}</td>
               <td>{{$devolucion->created_at}}</td>
-              <td>
-                <a href="" class="btn btn-primary"> Editar </a>
-              </td>
+
             </tr>
           @endforeach
         </tbody>

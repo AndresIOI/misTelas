@@ -49,7 +49,7 @@
             <div class="row">
                     <div class="col-sm-4">
                         <label for="">SKU/Modelo</label>
-                        <select name="" id="sku" class="form-control sku">
+                        <select name="" id="sku" class="form-control sku" onchange="limpiarSKU();">
                             <option value="" selected>Seleccione un SKU</option>
                             @foreach ($productos as $producto)
                                 <option value="{{$producto->SKU}}">{{$producto->SKU}}</option>
@@ -91,7 +91,7 @@
             
             <div class="col">
             <br>
-            <input type="button" onClick="agregar_PT_Entrada();" value="Añadir Producto" class="btn btn-primary">
+            <input type="button" onClick="agregar_PT_Entrada(); limpiar();" value="Añadir Producto" class="btn btn-primary">
             </div>
                 <br>
                 
@@ -140,6 +140,28 @@
 <script src={{asset("js/productos_terminados.js")}}></script>
 <script src={{asset("js/precioTotalTelas.js")}}></script>
 <script src={{asset("js/limpiar_entrada_habilitacion.js")}}></script>
+<script>
+        function limpiar() {
+            $('#sku').val("");
+            $('#clasificacion').val("");
+            $('#TipoProducto').val("");
+            $('#descripcion').val("");
+            $('#talla').val("");
+            $('#CantidadUnidades').val("");
+            $('#PrecioU').val("");
+            $('#Costo').val("");
+        }
+
+        function limpiarSKU() {
+            $('#clasificacion').val("");
+            $('#TipoProducto').val("");
+            $('#descripcion').val("");
+            $('#talla').val("");
+            $('#CantidadUnidades').val("");
+            $('#PrecioU').val("");
+            $('#Costo').val("");
+        }
+</script>
 
 
       

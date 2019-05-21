@@ -14,7 +14,6 @@
             <th scope="col">Clave Factura</th>
             <th scope="col">Fecha</th>
             <th scope="col">Número de Devolución</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -24,9 +23,6 @@
                 <td>{{$devolucion->entrada->claveFactura}}</td>
                 <td>{{$devolucion->created_at}}</td>
               <td>{{$devolucion->id}}</a></td>
-              <td>
-                  <a href="" class="btn btn-primary"> Editar </a>
-                </td>
             </tr>
           @endforeach
         </tbody>

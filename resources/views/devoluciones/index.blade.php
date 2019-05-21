@@ -14,7 +14,6 @@
             <th scope="col">Número de Entrada</th>
             <th scope="col">Clave Factura</th>
               <th scope="col">Número Devolución</th>
-              <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -23,9 +22,7 @@
               <td><a href="{{route('Devolucion-Tela.show',[$datos->id_devolucion])}}">{{$datos->ordenCompra}}</td>
                 <td>{{$datos->id_usuario}}</td>
               <td>{{$datos->id_devolucion}}</td>
-              <td>
-                <a href="" class="btn btn-primary"> Editar </a>
-              </td>
+
             </tr>
           @endforeach 
         </tbody>

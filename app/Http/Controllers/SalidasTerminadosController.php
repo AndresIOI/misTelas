@@ -224,7 +224,7 @@ class SalidasTerminadosController extends Controller
         $salida->usuarioSalida_id = $request->usuarioO_id;
         $salida->update();
 
-        return "Actualizado";
+        return redirect()->route('Salida-Terminados.show', [$salida->id])->with('status', 'Salida actualizada correctamente');
 
     }
 

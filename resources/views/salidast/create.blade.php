@@ -39,7 +39,7 @@
                     <div class="row">
                             <div class="col-sm-4">
                                     <label for="">SKU/Modelo</label>
-                                    <select class="form-control skuSalida" id="skuSalida">
+                                    <select class="form-control skuSalida" id="skuSalida" onchange="limpiarSku();">
                                         <option value="" selected>Seleccione el SKU/Modelo</option>
                                         @foreach($p as $sku)
                                             <option value="{{$sku->producto->id}}">{{$sku->producto->SKU}}</option>
@@ -85,7 +85,7 @@
             
                     <div class="col">
                     <br>
-                    <input type="button" onClick="agregar_PT_salida(); onImporteTotal();" value="Añadir Producto" class="btn btn-primary">
+                    <input type="button" onClick="agregar_PT_salida(); limpiar(); " value="Añadir Producto" class="btn btn-primary">
                     </div>
                         <br>
                         
@@ -131,6 +131,29 @@
         <script src={{asset("js/precioTotalTelas.js")}}></script>
         <script src={{asset("js/limpiar_entrada_habilitacion.js")}}></script>
         <script src={{asset("js/productos_terminados.js")}}></script>
+        <script>
+                function limpiar() {
+                    $('#skuSalida').val("");
+                    $('#clasificacion').val("");
+                    $('#tipoP').val("");
+                    $('#descripcion').val("");
+                    $('#talla').val("");
+                    $('#CantidadUnidadesAlmacen').val("");
+                    $('#CantidadUnidadesSalida').val("");
+                    $('#PrecioU').val("");
+                    $('#Costo').val("");
+                }
+                function limpiarSku(params) {
+                    $('#clasificacion').val("");
+                    $('#tipoP').val("");
+                    $('#descripcion').val("");
+                    $('#talla').val("");
+                    $('#CantidadUnidadesAlmacen').val("");
+                    $('#CantidadUnidadesSalida').val("");
+                    $('#PrecioU').val("");
+                    $('#Costo').val("");
+                }
+        </script>
         
               
         @endsection
