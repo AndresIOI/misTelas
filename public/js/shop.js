@@ -7,11 +7,12 @@ $(document).ready(function(){
         $.get('/api/producto/'+id+'/inventario/cantidad', function(data){
             quantity=Number.parseFloat(quantity);
             data =Number.parseFloat(data);
-            if(quantity <= data){
+            if(quantity > data || quantity <= 0){
+                return alert('Lo sentimos, en estos momentos no contamos con esa cantidad en stock\nó\nEl la cantidad que estas ingresando es menor o igual a 0');
+
+            }else{
                 e.preventDefault();
                 window.location.href = href + "/" + quantity;
-            }else{
-                alert('Lo sentimos, en estos momentos no contamos con esa cantidad en stock');
             }
 
         });
