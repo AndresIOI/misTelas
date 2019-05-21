@@ -6,8 +6,14 @@
             {{session('status')}}
         </div>
     @endif
+    <div class="page-header" style="text-align: center;">
+            <h1><i class="fa fa-shopping-cart"></i> Tienda Online - Mis Telas</h1>
+          </div>
+          <br>
     <div class="row">
-            @foreach ($productos_inventario as $producto)
+
+        @if (count($productos_inventario))
+        @foreach ($productos_inventario as $producto)
 
         <div class="col-4">
                 <div class="card" style="width: 18rem; margin-bottom: 50px;">
@@ -27,6 +33,12 @@
         </div>
 
         @endforeach
+        @else
+        <div style="text-align: center;"> 
+        <h3 ><span>Lo sentimos,actualmente no tenemos productos en existencia :(</span></h3>
+    </div>
+        @endif
+            
     </div>
 </div>
     

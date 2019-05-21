@@ -82,7 +82,6 @@ class EntradasTerminadosController extends Controller
         $entrada = new Entrada_Productos_Terminados();
         $entrada->numero_entrada = $request->num_entrada;
         $entrada->empleado_id = $request->usuarioT;
-        $entrada->numero_piezas = $request->piezas;
         $entrada->tipo_produccion_id = $request->produccion;
         $entrada->maquilero_id = $request->maquilero;
         $entrada->fecha = $request->fecha;

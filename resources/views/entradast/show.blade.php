@@ -14,7 +14,6 @@
                 <p><span style="font-weight:bold">Numero de Entrada: </span>{{$entrada->id}}</p>
                 <p><span style="font-weight:bold">Clave de Factura: </span>{{$entrada->numero_entrada}}</p>  
                 <p><span style="font-weight:bold">Quien recibio: </span>{{$entrada->usuarioT->nombre_usuarioT}}</p>  
-                <p><span style="font-weight:bold">Numero de Piezas Totales: </span>{{$entrada->numero_piezas}}</p>  
                 <p><span style="font-weight:bold">Tipo de Produccion: </span>{{$entrada->tipo_produccion->Tipo_produccion}}</p>
                 <p><span style="font-weight:bold">Maquilero: </span>{{$entrada->maquilero->nombre_maquilero}}</p>
                 <p><span style="font-weight:bold">Fecha: </span>{{$entrada->created_at}}</p>  

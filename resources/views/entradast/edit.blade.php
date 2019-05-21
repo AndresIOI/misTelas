@@ -18,7 +18,6 @@
                         @endif
                         @endforeach    
                     </select></p>  
-                    <p><span style="font-weight:bold">Numero de Piezas Totales: </span><input type="text" class="form-control" name="piezas" value="{{$entrada->numero_piezas}}"></p>  
                     <p><span style="font-weight:bold">Tipo de Produccion: </span><select name="tipo_id" id=""  class="form-control">
                         <option value="{{$entrada->tipo_produccion_id}}">{{$entrada->tipo_produccion->Tipo_produccion}}</option>    
                         @foreach ($produccion as $produc)

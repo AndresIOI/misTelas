@@ -43,11 +43,12 @@
           <div class="row">
             <div class="col-md-4 mt-5">
               <h2>Sobre Nosotros</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p>Empresa solida mexican con mas de 25 años de experiencia en el mundo textil. </p>
             </div>
             <div class="col-md-4 mt-5">
               <h2>Contacto</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p>CLLE MIXTECAS MZ 107 LT 7, AJUSCO , MEXICO , DF , C.P.04300
+                  ( 55)5610 6918</p>
             </div>
             <div class="col-md-4 mt-5">
               <h2>Conectate</h2>

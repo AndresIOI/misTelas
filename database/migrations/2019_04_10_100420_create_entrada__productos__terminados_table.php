@@ -17,7 +17,6 @@ class CreateEntradaProductosTerminadosTable extends Migration
             $table->increments('id');
             $table->string('numero_entrada')->unique();
             $table->unsignedInteger('empleado_id');
-            $table->integer('numero_piezas');
             $table->unsignedInteger('tipo_produccion_id');
             $table->unsignedInteger('maquilero_id');
             $table->string('fecha');

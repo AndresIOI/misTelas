@@ -19,8 +19,6 @@
                         <option value="{{$empleado->id}}">{{$empleado->nombre_usuarioT}}</option>   
                     @endforeach 
                     </select>
-                    <label for="">Número de Piezas Totales</label>
-                    <input type="number" name="piezas"  class="form-control" min="1">
 					<label>Tipo de Producción</label>
                     <select name="produccion" id="" class="form-control">
                         <option value="" selected>Seleccione el tipo de producción</option>
